@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Will You Be My Valentine?</title>
-  <!-- Include Quicksand Font with additional weight (900) -->
+  <meta charset="UTF-8" />
+  <title>Will You Be My Valentine Lilo?</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700;900&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Quicksand', sans-serif;
       font-weight: 900;
@@ -19,155 +21,175 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      background: linear-gradient(135deg, #ff5f9e, #ff2e63, #c9184a);
       color: #fff;
     }
-    /* Container */
+
     #container {
       text-align: center;
-      padding: 2rem;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      padding: 2.5rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
       position: relative;
-      z-index: 1;
-      margin: 1rem;
     }
-    /* Heading */
+
     #question {
-      font-size: 2.5rem;
+      font-size: 2.7rem;
       margin-bottom: 2rem;
-      font-weight: 900;
-      line-height: 1.2;
+      line-height: 1.3;
     }
-    /* Buttons Container */
+
+    #question span {
+      color: #ffe0ec;
+    }
+
     #buttons {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      gap: 1.2rem;
       position: relative;
-      height: 100px;
+      height: 120px;
     }
-    /* Buttons */
+
     .button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.2);
+      padding: 0.8rem 1.7rem;
+      font-size: 1.3rem;
+      border-radius: 12px;
       border: none;
       cursor: pointer;
-      position: relative;
-      transition: transform 0.3s, background 0.3s, left 0.5s ease, top 0.5s ease;
-      min-width: 120px;
-      text-align: center;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.25);
+      transition: all 0.3s ease;
     }
-    /* Hover and Active States */
+
     .button:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.08);
+      background: rgba(255, 255, 255, 0.35);
     }
-    .button:active {
-      transform: translateY(0);
-    }
-    /* 'No' Button Specific Styles */
+
     #noButton {
-      z-index: 2;
+      position: relative;
     }
-    /* Responsive Design */
-    @media only screen and (max-width: 768px) {
-      #question {
-        font-size: 2rem;
-      }
-      .button {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-      }
-      #buttons {
-        height: auto;
-      }
+
+    /* POPUP */
+    #popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
     }
-    @media only screen and (max-width: 480px) {
-      #question {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-      }
-      .button {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.9rem;
-        min-width: 100px;
+
+    #popupContent {
+      background: #fff;
+      color: #ff2e63;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      animation: pop 0.6s ease;
+      max-width: 90%;
+    }
+
+    #popupContent h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    #popupContent p {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #popupContent img {
+      width: 260px;
+      border-radius: 15px;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.4); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: float 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
       }
     }
   </style>
 </head>
+
 <body>
   <div id="container">
-    <div id="question">Will you be my Valentine?</div>
+    <div id="question">
+      Will you be my Valentine <span>Lilo</span> 💖?
+    </div>
+
     <div id="buttons">
-      <a href="yes.html" id="yesButton" class="button">Yes!</a>
-      <button id="noButton" class="button" type="button">No!</button>
+      <button id="yesButton" class="button">Yes!! 💕</button>
+      <button id="noButton" class="button">No 😅</button>
     </div>
   </div>
+
+  <!-- POPUP -->
+  <div id="popup">
+    <div id="popupContent">
+      <h1>Best decision ever!! 💘</h1>
+      <p>YAYYYYY!! 🥰💃</p>
+      <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="The Office Celebration">
+    </div>
+  </div>
+
   <script>
     const noButton = document.getElementById('noButton');
-    let moveCount = 0; // To count the moves
+    const yesButton = document.getElementById('yesButton');
+    const popup = document.getElementById('popup');
 
-    // Add click and touch event listeners to the "No" button
-    noButton.addEventListener('click', moveNoButton);
-    noButton.addEventListener('touchstart', moveNoButton);
+    // NO button escapes 😈
+    noButton.addEventListener('mouseenter', moveNo);
+    noButton.addEventListener('touchstart', moveNo);
 
-    function moveNoButton(e) {
-      e.preventDefault();
+    function moveNo() {
+      const maxX = window.innerWidth - noButton.offsetWidth;
+      const maxY = window.innerHeight - noButton.offsetHeight;
 
-      // After two moves, hide the "No" button
-      if (moveCount >= 2) {
-        noButton.style.display = 'none';
-        return;
-      }
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
 
-      // Get the current position relative to the viewport
-      const rect = noButton.getBoundingClientRect();
-      const currentX = rect.left;
-      const currentY = rect.top;
-      const buttonWidth = noButton.offsetWidth;
-      const buttonHeight = noButton.offsetHeight;
-
-      // Define boundaries for the random position
-      const margin = 10;
-      const maxX = window.innerWidth - buttonWidth - margin;
-      const maxY = window.innerHeight - buttonHeight - margin;
-
-      // Ensure movement is at least 25% of the screen width
-      const minMovement = window.innerWidth * 0.25;
-      let randomX, randomY, distance;
-      let attempts = 0;
-      const maxAttempts = 100;
-
-      do {
-        randomX = Math.floor(Math.random() * (maxX - margin + 1)) + margin;
-        randomY = Math.floor(Math.random() * (maxY - margin + 1)) + margin;
-        distance = Math.hypot(randomX - currentX, randomY - currentY);
-        attempts++;
-      } while (distance < minMovement && attempts < maxAttempts);
-
-      // Set the "No" button's position to fixed so it moves relative to the viewport
       noButton.style.position = 'fixed';
-      noButton.style.left = randomX + 'px';
-      noButton.style.top = randomY + 'px';
+      noButton.style.left = x + 'px';
+      noButton.style.top = y + 'px';
+    }
 
-      moveCount++;
+    // YES button
+    yesButton.addEventListener('click', () => {
+      popup.style.display = 'flex';
+      spawnHearts();
+    });
 
-      // After two moves, hide the button after a short delay so the final position is visible
-      if (moveCount >= 2) {
-        setTimeout(() => {
-          noButton.style.display = 'none';
-        }, 300);
+    function spawnHearts() {
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
       }
     }
   </script>
