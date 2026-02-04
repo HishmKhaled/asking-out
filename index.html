@@ -131,8 +131,12 @@
   <!-- Popup -->
   <div id="popup">
     <div id="popupContent">
-      <h2>Best decision ever 💕</h2>
-      <img id="valentineGif" src="" alt="Valentine GIF">
+      <h2>It’s a date. Fact. 💕</h2>
+      <img
+        id="valentineGif"
+        src="https://media.giphy.com/media/3o6MbkPiScbllcS1s4/giphy.gif"
+        alt="Jim and Pam Valentine GIF"
+      >
     </div>
   </div>
 
@@ -140,14 +144,6 @@
     const noBtn = document.getElementById('noButton');
     const yesBtn = document.getElementById('yesButton');
     const popup = document.getElementById('popup');
-    const gifImg = document.getElementById('valentineGif');
-
-    const valentineGifs = [
-      "https://media.giphy.com/media/3oz8xsaLjLVqVXr3tS/giphy.gif",
-      "https://media.giphy.com/media/l0MYyDa8S9ghzNebm/giphy.gif",
-      "https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif",
-      "https://media.giphy.com/media/1hqb8LwPS2xCNCpWH8/giphy.gif"
-    ];
 
     noBtn.addEventListener('mouseover', moveNo);
     noBtn.addEventListener('touchstart', moveNo);
@@ -161,8 +157,6 @@
     }
 
     yesBtn.addEventListener('click', () => {
-      const randomGif = valentineGifs[Math.floor(Math.random() * valentineGifs.length)];
-      gifImg.src = randomGif;
       popup.style.display = 'flex';
       createHearts();
     });
