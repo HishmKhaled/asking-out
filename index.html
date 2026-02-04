@@ -94,11 +94,6 @@
       font-size: 2rem;
     }
 
-    #popupContent p {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-
     #popupContent img {
       max-width: 100%;
       border-radius: 15px;
@@ -126,7 +121,7 @@
 
 <body>
   <div id="container">
-    <div id="question">Will you be my Valentine, Lilo ❤️?</div>
+    <div id="question">Will you be my Valentine, Sara ❤️?</div>
     <div id="buttons">
       <button id="yesButton" class="button">Yes 💖</button>
       <button id="noButton" class="button">No 😅</button>
@@ -137,9 +132,7 @@
   <div id="popup">
     <div id="popupContent">
       <h2>Best decision ever 💕</h2>
-    <!--  <p>Like there was ever another answer 😄❤️</p> -->
-      <!-- 🔁 PUT YOUR GIF LINK HERE -->
-      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Ross and Rachel">
+      <img id="valentineGif" src="" alt="Valentine GIF">
     </div>
   </div>
 
@@ -147,6 +140,14 @@
     const noBtn = document.getElementById('noButton');
     const yesBtn = document.getElementById('yesButton');
     const popup = document.getElementById('popup');
+    const gifImg = document.getElementById('valentineGif');
+
+    const valentineGifs = [
+      "https://media.giphy.com/media/3oz8xsaLjLVqVXr3tS/giphy.gif",
+      "https://media.giphy.com/media/l0MYyDa8S9ghzNebm/giphy.gif",
+      "https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif",
+      "https://media.giphy.com/media/1hqb8LwPS2xCNCpWH8/giphy.gif"
+    ];
 
     noBtn.addEventListener('mouseover', moveNo);
     noBtn.addEventListener('touchstart', moveNo);
@@ -160,6 +161,8 @@
     }
 
     yesBtn.addEventListener('click', () => {
+      const randomGif = valentineGifs[Math.floor(Math.random() * valentineGifs.length)];
+      gifImg.src = randomGif;
       popup.style.display = 'flex';
       createHearts();
     });
@@ -179,5 +182,3 @@
   </script>
 </body>
 </html>
-
-
