@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Valentine 💘</title>
+  <title>Will You Be My Valentine Lilo?</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700;900&display=swap" rel="stylesheet">
 
   <style>
@@ -14,29 +15,34 @@
 
     body {
       font-family: 'Quicksand', sans-serif;
+      font-weight: 900;
       height: 100vh;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      background: linear-gradient(135deg, #ff5f9e, #ff2e63, #c9184a);
       color: #fff;
     }
 
     #container {
       text-align: center;
       padding: 2.5rem;
-      background: rgba(255, 255, 255, 0.15);
       border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
       position: relative;
     }
 
     #question {
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       margin-bottom: 2rem;
-      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    #question span {
+      color: #ffe0ec;
     }
 
     #buttons {
@@ -44,44 +50,43 @@
       justify-content: center;
       gap: 1.2rem;
       position: relative;
-      height: 100px;
+      height: 120px;
     }
 
     .button {
-      padding: 0.8rem 1.8rem;
+      padding: 0.8rem 1.7rem;
       font-size: 1.3rem;
-      font-weight: 900;
       border-radius: 12px;
       border: none;
       cursor: pointer;
-      transition: all 0.3s ease;
-      background: rgba(255,255,255,0.25);
       color: #fff;
+      background: rgba(255, 255, 255, 0.25);
+      transition: all 0.3s ease;
     }
 
     .button:hover {
-      transform: scale(1.1);
-      background: rgba(255,255,255,0.35);
+      transform: scale(1.08);
+      background: rgba(255, 255, 255, 0.35);
     }
 
     #noButton {
       position: relative;
     }
 
-    /* Popup */
+    /* POPUP */
     #popup {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.65);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 10;
+      z-index: 999;
     }
 
     #popupContent {
       background: #fff;
-      color: #ff4d6d;
+      color: #ff2e63;
       padding: 2rem;
       border-radius: 20px;
       text-align: center;
@@ -89,88 +94,102 @@
       max-width: 90%;
     }
 
-    #popupContent h2 {
+    #popupContent h1 {
+      font-size: 2.2rem;
       margin-bottom: 1rem;
-      font-size: 2rem;
+    }
+
+    #popupContent p {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     #popupContent img {
-      max-width: 100%;
+      width: 260px;
       border-radius: 15px;
     }
 
     @keyframes pop {
-      0% { transform: scale(0.5); opacity: 0; }
+      0% { transform: scale(0.4); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* Hearts */
+    /* floating hearts */
     .heart {
       position: fixed;
       bottom: -20px;
       font-size: 24px;
-      animation: float 4s linear infinite;
+      animation: float 5s linear infinite;
+      opacity: 0.8;
     }
 
     @keyframes float {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-120vh); opacity: 0; }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 
 <body>
   <div id="container">
-    <div id="question">Will you be my Valentine, liloooo ❤️?</div>
+    <div id="question">
+      Will you be my Valentine <span>Lilo</span> 💖?
+    </div>
+
     <div id="buttons">
-      <button id="yesButton" class="button">Yes 💖</button>
+      <button id="yesButton" class="button">Yes!! 💕</button>
       <button id="noButton" class="button">No 😅</button>
     </div>
   </div>
 
-  <!-- Popup -->
+  <!-- POPUP -->
   <div id="popup">
     <div id="popupContent">
-      <h2>It’s a date. Fact. 💕</h2>
-      <img
-        id="valentineGif"
-        src="https://media.giphy.com/media/3o6MbkPiScbllcS1s4/giphy.gif"
-        alt="Jim and Pam Valentine GIF"
-      >
+      <h1>Best decision ever!! 💘</h1>
+      <p>YAYYYYY!! 🥰💃</p>
+      <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="The Office Celebration">
     </div>
   </div>
 
   <script>
-    const noBtn = document.getElementById('noButton');
-    const yesBtn = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const yesButton = document.getElementById('yesButton');
     const popup = document.getElementById('popup');
 
-    noBtn.addEventListener('mouseover', moveNo);
-    noBtn.addEventListener('touchstart', moveNo);
+    // NO button escapes 😈
+    noButton.addEventListener('mouseenter', moveNo);
+    noButton.addEventListener('touchstart', moveNo);
 
     function moveNo() {
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 60);
-      noBtn.style.position = 'fixed';
-      noBtn.style.left = x + 'px';
-      noBtn.style.top = y + 'px';
+      const maxX = window.innerWidth - noButton.offsetWidth;
+      const maxY = window.innerHeight - noButton.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noButton.style.position = 'fixed';
+      noButton.style.left = x + 'px';
+      noButton.style.top = y + 'px';
     }
 
-    yesBtn.addEventListener('click', () => {
+    // YES button
+    yesButton.addEventListener('click', () => {
       popup.style.display = 'flex';
-      createHearts();
+      spawnHearts();
     });
 
-    function createHearts() {
-      for (let i = 0; i < 20; i++) {
+    function spawnHearts() {
+      for (let i = 0; i < 25; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
-        heart.textContent = '💖';
+        heart.innerHTML = '💖';
         heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        heart.style.animationDuration = 3 + Math.random() * 3 + 's';
         document.body.appendChild(heart);
 
-        setTimeout(() => heart.remove(), 4000);
+        setTimeout(() => heart.remove(), 5000);
       }
     }
   </script>
